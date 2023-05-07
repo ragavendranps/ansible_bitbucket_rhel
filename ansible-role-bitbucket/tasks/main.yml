@@ -12,10 +12,10 @@
 
 - name: Setting Java Home path for Java 8
   blockinfile:
-        path: /etc/profile
-        block: |
-          export JAVA_HOME={{ java_home }}
-          export PATH=$JAVA_HOME/bin:$PATH
+    path: /etc/profile
+    block: |
+      export JAVA_HOME={{ java_home }}
+      export PATH=$JAVA_HOME/bin:$PATH
 - pause:
     seconds: 5
 
