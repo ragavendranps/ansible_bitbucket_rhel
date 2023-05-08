@@ -19,6 +19,6 @@ bitbucket_url: "https://downloads.atlassian.com/software/stash/downloads/{{ bitb
 bitbucket_user: bitbucket
 bitbucket_version: atlassian-bitbucket-8.9.0
 bitbucket_java_url: "https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u372-b07/openlogic-openjdk-8u372-b07-linux-x64.tar.gz"
-bitbucket_java_home: "/usr/lib/jvm"
+bitbucket_java_home: "/usr/lib/jvm/openlogic-openjdk-8u372-b07-linux-x64"
 bitbucket_java: openlogic-openjdk-8u372-b07-linux-x64.tar.gz
 java_home: /usr/lib/jvm/openlogic-openjdk-8u372-b07-linux-x64/jre
