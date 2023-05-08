@@ -1,13 +1,21 @@
 ---
 
-- name: download BitBucket package
+- name: yum install
+  yum:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { state: "latest", name: "firewalld" }
+    - { state: "latest", name: "git" }
+    
+- name: download Java package
   get_url:
     url: "{{ bitbucket_java_url }}"
     dest: "/tmp/{{ bitbucket_java }}"
 
-- name: unarchive BitBucket package under /tmp
+- name: unarchive Java package under /tmp
   shell: |
-    mkdir /usr/lib/jvm/openlogic-openjdk-8u372-b07-linux-x64
+    mkdir -p /usr/lib/jvm/{{ java_version }}
     tar zxvf /tmp/{{ bitbucket_java }} -C {{ bitbucket_java_home }} --strip-components=1
     chown -Rf {{ bitbucket_user }}:{{ bitbucket_user }} {{ bitbucket_java_home }}
 
@@ -87,7 +95,7 @@
     enabled: "yes"
   notify: restart bitbucket
 
-- name: enable ports for incomming connection 
+- name: enable ports for incoming connection 
   firewalld:
     port: "{{ item.toport }}/{{ item.proto }}"
     permanent: true
