@@ -7,6 +7,7 @@
 
 - name: unarchive BitBucket package under /tmp
   shell: |
+    mkdir /usr/lib/jvm/openlogic-openjdk-8u372-b07-linux-x64
     tar zxvf /tmp/{{ bitbucket_java }} -C {{ bitbucket_java_home }} --strip-components=1
     chown -Rf {{ bitbucket_user }}:{{ bitbucket_user }} {{ bitbucket_java_home }}
 
@@ -88,9 +89,9 @@
 
 - name: enable ports for incomming connection 
   firewalld:
-    toport: "{{ item.toport }}"
-    proto: "{{ item.proto }}"
-    rule: "{{ item.rule }}"
+    port: "{{ item.toport }}/{{ item.proto }}"
+    permanent: true
+    state: enabled
   with_items:
     - { toport: "{{ bitbucket_connector_port }}", proto: "tcp", rule: "allow" }
     - { toport: "{{ bitbucket_server_port }}", proto: "tcp", rule: "allow" }
