@@ -22,3 +22,4 @@ bitbucket_java_url: "https://builds.openlogic.com/downloadJDK/openlogic-openjdk/
 bitbucket_java_home: "/usr/lib/jvm/openlogic-openjdk-8u372-b07-linux-x64"
 bitbucket_java: openlogic-openjdk-8u372-b07-linux-x64.tar.gz
 java_home: /usr/lib/jvm/openlogic-openjdk-8u372-b07-linux-x64/jre
+java_version: "openlogic-openjdk-8u372-b07-linux-x64"
